@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/conversion_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/conversion_select"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/convBtnGrp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:checkedButton="@id/convmtkBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/conversion_selector">
+
+        <RadioButton
+            android:id="@+id/convmtkBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="conversionSelection"
+            android:text="@string/miles_to_kilometers"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/convktmBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="conversionSelection"
+            android:text="@string/kilometers_to_miles"
+            android:textSize="14sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/valueTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:fontFamily="sans-serif"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/inpVal"
+        app:layout_constraintStart_toEndOf="@+id/convBtnGrp"
+        app:layout_constraintTop_toTopOf="@+id/inpVal"
+        tools:text="kilometers value" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <EditText
+        android:id="@+id/inpVal"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/colorButtonNormal"
+        android:ems="10"
+        android:hint="@string/enter_value"
+        android:importantForAutofill="no"
+        android:inputType="none|numberSigned|numberDecimal"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="100" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="conversion"
+        android:text="@string/convert"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/convBtnGrp"
+        app:layout_constraintTop_toBottomOf="@+id/inpVal" />
+
+    <TextView
+        android:id="@+id/ansTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/outVal"
+        app:layout_constraintEnd_toStartOf="@+id/outVal"
+        app:layout_constraintStart_toEndOf="@+id/convBtnGrp"
+        app:layout_constraintTop_toTopOf="@+id/outVal"
+        tools:text="miles value" />
+
+    <TextView
+        android:id="@+id/outVal"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/colorButtonNormal"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/inpVal"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:text="160" />
+
+    <TextView
+        android:id="@+id/convHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/conversion_history"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/convBtnGrp" />
+
+    <TextView
+        android:id="@+id/convHistBox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="80dp"
+        android:background="?attr/colorButtonNormal"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/convHist"
+        tools:text="km to miles" />
+
+    <Button
+        android:id="@+id/clrHistBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="clearHist"
+        android:text="@string/clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/convHistBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/convHistBox" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
